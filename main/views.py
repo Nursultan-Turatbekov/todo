@@ -18,3 +18,5 @@ def second(request):
 # Create your views here.
 
 
+def work(request):
+    return render(request, "work.html")
