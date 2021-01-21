@@ -17,13 +17,13 @@ section{
     width: 80%;
 }
 
-.create_input{
+.create__input{
     padding: 12px 5px;
     font-size: 18px;
     width: 80%;
 }
 
-.create_button{
+.create__btn{
     padding: 12px 20px;
     background-color: #CE93d8;
     border: 1px solid #CE93d8;
@@ -46,6 +46,7 @@ section{
 header {   
     width: 100%;
     display: block;
+    background: #CE93d8;
 }
 
 .book_container{

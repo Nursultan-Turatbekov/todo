@@ -4,22 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>   
+    <title>Book</title>   
     <link rel="stylesheet" href="{% static 'styles/new.css' %}">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
 </head>
 <body>
     <section>
-        <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-            <p class="h5 my-0 me-md-auto fw-normal">Book store</p>
-            <nav class="my-2 my-md-0 me-md-3">
-            <a class="p-2 text-dark" href="#">About</a>
-            <a class="p-2 text-dark" href="#">Contacts</a>
-            <a class="p-2 text-dark" href="#">Add input</a>
-            </nav>
+        <header>
+            <p>Book store</p>
         </header>
         
+    
         <!-- <div>
         {% for book in book_list %}
             
@@ -47,23 +42,39 @@
         </div> 
 
         <div class="create_container">
-            <form action="{% url 'add-todo' %}" method="POST">
+            <form action="{% url 'add-book' %}" method="POST" class="books__form">
               {% csrf_token %}
-              <input
+              <input type="text" class="create__input" 
+              name="book_title" placeholder="Название книги">
+              <input type="text" class="create__input" 
+              name="book_subtitle" placeholder="Подзагловок">
+              <input type="text" class="create__input" 
+              name="book_description" placeholder="Описание">
+              <input type="text" class="create__input" 
+              name="book_author" placeholder="Автор">
+              <input type="text" class="create__input" 
+              name="book_price" placeholder="Цена">
+              <input type="text" class="create__input" 
+              name="book_genre" placeholder="Жанр">
+              <input type="text" class="create__input" 
+              name="book_year" placeholder="Год выпуска">
+            
+              <button class="create__btn">Добавить</button>
+            
+           
+              <!-- <input
                   class="create_input"
                   type="text"
                   placeholder="Напишите сюда новую задачу"
-                  name="todo_text"
+                  name="book_text"
                   
-              />
-              <button class="create_button">Добавить</button>
+              /> -->
+              
             </form>
         </div>
   
 
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     
 </body>
 </html>
