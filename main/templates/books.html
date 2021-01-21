@@ -4,17 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title>   
+    <link rel="stylesheet" href="{% static 'styles/new.css' %}">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
-    <div>
-    {% for book in book_list %}
+    <section>
+        <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+            <p class="h5 my-0 me-md-auto fw-normal">Book store</p>
+            <nav class="my-2 my-md-0 me-md-3">
+            <a class="p-2 text-dark" href="#">About</a>
+            <a class="p-2 text-dark" href="#">Contacts</a>
+            <a class="p-2 text-dark" href="#">Add input</a>
+            </nav>
+        </header>
         
-        <p>{{ book.title }}</p>
-        <p>{{ book.subtitle }}</p>
-        <p>{{ book.description }}</p>
-        
-    {% endfor %}
-    </div>
+        <!-- <div>
+        {% for book in book_list %}
+            
+            <p>{{ book.title }}</p>
+            <p>{{ book.subtitle }}</p>
+            <p>{{ book.description }}</p>
+            
+        {% endfor %}
+        </div>  
+         -->
+
+        <div class="book_container">
+            {% for book in book_list %}
+            <div class="book_header">
+                <div class="hour">
+                    <img src="./bee4cbb7-8959-44fd-95bd-735b818106ff.jpg">
+                </div>    
+                <p>{{ book.title }}</p><br>
+                <p>{{ book.subtitle }}</p><br>
+                <p>{{ book.description }}</p><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolor adipisci dolorum aspernatur eaque repellat illo nam quas doloremque earum? Fugit dolorum libero eaque.</p>
+            
+            </div> 
+            {% endfor %}  
+        </div> 
+
+        <div class="create_container">
+            <form action="{% url 'add-todo' %}" method="POST">
+              {% csrf_token %}
+              <input
+                  class="create_input"
+                  type="text"
+                  placeholder="Напишите сюда новую задачу"
+                  name="todo_text"
+                  
+              />
+              <button class="create_button">Добавить</button>
+            </form>
+        </div>
+  
+
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    
 </body>
 </html>
