@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book</title>   
     <link rel="stylesheet" href="{% static 'styles/new.css' %}">
-    
+    <link rel="stylesheet" href="{% static 'styles/chebox.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+
 </head>
 <body>
     <section>
-        <header>
-            <p>Book store</p>
+        <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+            <p class="h5 my-0 me-md-auto fw-normal">Book store</p>
+            <nav class="my-2 my-md-0 me-md-3">
+              <a class="p-2 text-dark" href="#">Add input</a>
+              <a class="p-2 text-dark" href="#"></a> 
+            </nav>
+            <a class="btn btn-outline-primary" href="#">Sign up</a>
         </header>
         
     
@@ -27,19 +34,41 @@
          -->
 
         <div class="book_container">
-            {% for book in book_list %}
-            <div class="book_header">
-                <div class="hour">
-                    <img src="./bee4cbb7-8959-44fd-95bd-735b818106ff.jpg">
-                </div>    
-                <p>{{ book.title }}</p><br>
-                <p>{{ book.subtitle }}</p><br>
-                <p>{{ book.description }}</p><br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolor adipisci dolorum aspernatur eaque repellat illo nam quas doloremque earum? Fugit dolorum libero eaque.</p>
             
-            </div> 
-            {% endfor %}  
-        </div> 
+            {% for book in book_list %}
+            <div class="book_item
+            {% if book.is_favorite %}
+                marked
+            {% endif %}
+
+            ">
+                <div class="book_item_header">
+                    <label class="checkbox_container">
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                    </label>
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.subtitle }}</p>
+                    <p>{{ book.description }}</p>   
+
+                </div>
+                <div class="book_item_footer">
+                    <p>{{ book.created_at }}</p>
+                    <div class="action_butons">
+                        <a href="{% url 'info-book' book.id %}"> <img src="../static/icons/images.jpg"/></a>
+                        {% if book.is_favorite %}
+                        <a href="{% url 'nomarked-book' book.id %}"><img src="../static/icons/marked.jpg"/></a>   
+                        {% else %}
+                        <a href="{% url 'marked-book' book.id %}"><img src="../static/icons/nomarked.png"/></a>
+                        {% endif %}
+                        <a href="{% url 'delete-book' book.id %}"><img src="../static/icons/delete.jpg"/></a>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+           
+        </div>
 
         <div class="create_container">
             <form action="{% url 'add-book' %}" method="POST" class="books__form">

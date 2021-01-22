@@ -28,5 +28,13 @@ urlpatterns = [
     path("book/", books), 
     path("add-todo/", add_todo, name="add-todo"),
     path("add-book/", add_book, name="add-book"),
+    path("delete-todo/<id>/", delete_todo, name="delete-todo"),
+    path("marked-todo/<id>/", marked_todo, name="marked-todo"),
+    path("nomarked-todo/<id>/", nomarked_todo, name="nomarked-todo"),
+    path("delete-book/<id>/", delete_book, name="delete-book"),
+    path("marked-book/<id>/", marked_book, name="marked-book"),
+    path("nomarked-book/<id>/", nomarked_book, name="nomarked-book"),
+    path("book-1/", book_1, name="book-1"),
+    path("info-book/<id>/", info_book, name="info-book"), 
 ]   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
