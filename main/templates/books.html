@@ -18,20 +18,7 @@
               <a class="p-2 text-dark" href="#">Add input</a>
               <a class="p-2 text-dark" href="#"></a> 
             </nav>
-            <a class="btn btn-outline-primary" href="#">Sign up</a>
         </header>
-        
-    
-        <!-- <div>
-        {% for book in book_list %}
-            
-            <p>{{ book.title }}</p>
-            <p>{{ book.subtitle }}</p>
-            <p>{{ book.description }}</p>
-            
-        {% endfor %}
-        </div>  
-         -->
 
         <div class="book_container">
             
@@ -39,15 +26,22 @@
             <div class="book_item
             {% if book.is_favorite %}
                 marked
+            {% elif book.is_closed %}
+                done    
             {% endif %}
 
             ">
                 <div class="book_item_header">
                     <label class="checkbox_container">
-                        <input type="checkbox" />
+                        <input type="checkbox"
+                            {% if book.is_closed %}
+                                checked
+                            {% endif %}    
+                        
+                        />
                         <span class="checkmark"></span>
                     </label>
-                    <h3>{{ book.title }}</h3>
+                    <h3><a href="{% url 'close-book' book.id %}">{{ book.title }}</a></h3>
                     <p>{{ book.subtitle }}</p>
                     <p>{{ book.description }}</p>   
 
@@ -90,15 +84,6 @@
             
               <button class="create__btn">Добавить</button>
             
-           
-              <!-- <input
-                  class="create_input"
-                  type="text"
-                  placeholder="Напишите сюда новую задачу"
-                  name="book_text"
-                  
-              /> -->
-              
             </form>
         </div>
   

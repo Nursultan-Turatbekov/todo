@@ -88,9 +88,12 @@ section{
 .book_item_header h3{
     font-size: 18px;
     font-family: sans-serif;
-    color: rgb(150, 70, 50);
-    
+    color: rgb(207, 142, 126);
 }
+
+.book_item_header h3 a{
+    text-decoration: none;
+}    
 
 .book_item_footer{
     display: flex;

@@ -97,4 +97,16 @@ def info_book(request, id):
     book = Book.objects.get(id=id)
     return render(request, 'books_detail.html', {'book': book})
 
+def close_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_closed = not todo.is_closed
+    todo.save()
+    return redirect(test)    
+
+def close_book(request, id):
+    book = Book.objects.get(id=id)
+    book.is_closed = not book.is_closed
+    book.save()
+    return redirect(books)
+
 
