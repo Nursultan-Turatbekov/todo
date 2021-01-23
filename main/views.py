@@ -84,11 +84,17 @@ def nomarked_book(request, id):
     book.save()
     return redirect(books)  
 
-def book_1(request):
-    book_list = Book.objects.all()
-    return render(request, "books_detail.html", {"book_list": book_list})     
+# def book_1(request):
+#     book_list = Book.objects.all()
+#     return render(request, "books_detail.html", {"book_list": book_list})     
+
+# def info_book(request, id):
+#     book = Book.objects.get(id=id)
+#     book.save()
+#     return redirect(book_1)  
 
 def info_book(request, id):
     book = Book.objects.get(id=id)
-    book.save()
-    return redirect(book_1)      
+    return render(request, 'books_detail.html', {'book': book})
+
+

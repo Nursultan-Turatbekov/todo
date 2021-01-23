@@ -53,9 +53,9 @@
 
                 </div>
                 <div class="book_item_footer">
-                    <p>{{ book.created_at }}</p>
+                    <!-- <p>{{ book.date }}</p> -->
                     <div class="action_butons">
-                        <a href="{% url 'info-book' book.id %}"> <img src="../static/icons/images.jpg"/></a>
+                        <a href="{% url 'info-book' book.id %}"> <img src="../static/icons/загружено.png"/></a>
                         {% if book.is_favorite %}
                         <a href="{% url 'nomarked-book' book.id %}"><img src="../static/icons/marked.jpg"/></a>   
                         {% else %}
